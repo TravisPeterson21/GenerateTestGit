@@ -1,0 +1,52 @@
+name: Documentation Update
+description: Report issues with documentation or suggest improvements.
+title: "[Docs]: "
+labels: ["documentation", "content"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Documentation Update  
+        Propose fixes or improvements to the documentation.
+
+  - type: textarea
+    id: current-issue
+    attributes:
+      label: Current Documentation Issue
+      description: Describe the problem with the current documentation.
+      placeholder: Describe what’s wrong or missing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-change
+    attributes:
+      label: Proposed Change
+      description: Describe the update or improvement you’re suggesting.
+      placeholder: Describe the new content or fix here.
+
+  - type: input
+    id: page-link
+    attributes:
+      label: Documentation Page Link
+      description: Provide a link to the affected documentation page (if applicable).
+      placeholder: URL to documentation.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How urgent is this update?
+      options:
+        - Low
+        - Medium
+        - High
+      default: 1 # Defaults to "Medium" (index starts at 0)
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow the Code of Conduct.
+          required: true
