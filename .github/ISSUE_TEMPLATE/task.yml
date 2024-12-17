@@ -1,0 +1,52 @@
+name: Task
+description: Log a general task or action item.
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: textarea
+    id: task-details
+    attributes:
+      label: Task Details
+      description: Describe the task to be completed.
+      placeholder: Add task details here.
+    validations:
+      required: true
+
+  - type: input
+    id: assigned-to
+    attributes:
+      label: Assigned To
+      description: Who is responsible for completing this task?
+      placeholder: GitHub username (optional)
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this task?
+      options:
+        - Low
+        - Medium
+        - High
+      default: 1 # Defaults to "Medium" (index starts at 0)
+
+  - type: input
+    id: due-date
+    attributes:
+      label: Deadline
+      description: Specify a due date for the task.
+      placeholder: YYYY-MM-DD
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Add any other context or information here.
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow the Code of Conduct.
+          required: true
