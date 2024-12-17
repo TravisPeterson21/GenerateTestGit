@@ -26,8 +26,6 @@ body:
         - FS185 - Exiting Special Education
         - FS203 - Post-School Outcomes
         - Other (Specify in comments)
-      validations:
-        required: true
 
   - type: textarea
     id: progress
@@ -35,8 +33,6 @@ body:
       label: File Development Progress
       description: Describe the progress made on this file (e.g., status, blockers, next steps).
       placeholder: Provide details about the development progress here.
-    validations:
-      required: true
 
   - type: dropdown
     id: acceptance-criteria
@@ -47,11 +43,9 @@ body:
         - Setup
         - QA
         - Migration Steps
-        - Requires updating of Test Case(s)
-        - Identify any documentation updates
+        - "Requires updating of Test Case(s)"
+        - Identify documentation updates
         - Impact to OSC
-      validations:
-        required: true
 
   - type: dropdown
     id: test-case-update
@@ -59,10 +53,8 @@ body:
       label: Requires Updating of Test Case(s)?
       description: Does this update require changes to test cases?
       options:
-        - Yes
-        - No
-      validations:
-        required: true
+        - "Yes"
+        - "No"
 
   - type: input
     id: documentation-updates
@@ -70,8 +62,6 @@ body:
       label: Documentation Updates
       description: Specify any documentation updates needed (e.g., guide names or pages).
       placeholder: Documentation details here.
-    validations:
-      required: false
 
   - type: input
     id: osc-impact
@@ -79,8 +69,6 @@ body:
       label: Impact to OSC
       description: Describe the impact to OSC, and include the OSC ticket number if applicable.
       placeholder: e.g., OSC-12345
-    validations:
-      required: false
 
   - type: dropdown
     id: state-organization
@@ -140,8 +128,6 @@ body:
         - Wyoming
         - CNMI (Commonwealth of the Northern Mariana Islands)
         - Other Organization
-      validations:
-        required: true
 
   - type: textarea
     id: additional-comments
@@ -149,8 +135,6 @@ body:
       label: Additional Comments
       description: Add any other relevant details or comments about this file.
       placeholder: Additional notes here.
-    validations:
-      required: false
 
   - type: checkboxes
     id: terms
@@ -159,4 +143,3 @@ body:
       description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com/code-of-conduct).
       options:
         - label: I agree to follow this project's Code of Conduct
-          required: true
