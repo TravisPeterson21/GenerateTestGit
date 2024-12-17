@@ -1,4 +1,4 @@
-name: Bug Report
+name: Tickets
 description: Report an issue or bug in the system.
 title: "[Bug]: "
 labels: ["bug", "triage"]
