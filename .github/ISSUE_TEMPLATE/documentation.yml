@@ -7,7 +7,12 @@ body:
     attributes:
       value: |
         ## Documentation Update  
-        Propose fixes or improvements to the documentation.
+        Use this form to propose fixes or improvements to the documentation.  
+        
+        📚 **Relevant Documentation Links**:  
+        - [GitBook Home Page](https://your-gitbook-home-link)  
+        - [Significant Disproportionality Guide](https://your-gitbook-link)  
+        - [Set Up Guide](https://your-gitbook-link)  
 
   - type: textarea
     id: current-issue
@@ -29,8 +34,8 @@ body:
     id: page-link
     attributes:
       label: Documentation Page Link
-      description: Provide a link to the affected documentation page (if applicable).
-      placeholder: URL to documentation.
+      description: Provide a link to the affected GitBook documentation page.
+      placeholder: Paste the GitBook page URL here.
 
   - type: dropdown
     id: priority
@@ -41,7 +46,7 @@ body:
         - Low
         - Medium
         - High
-      default: 1 # Defaults to "Medium" (index starts at 0)
+      default: 1 # Medium priority
 
   - type: checkboxes
     id: terms
@@ -50,3 +55,4 @@ body:
       options:
         - label: I agree to follow the Code of Conduct.
           required: true
+
