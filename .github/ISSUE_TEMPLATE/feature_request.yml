@@ -6,15 +6,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Feature Request
-        Propose a new feature or improvement.
+        ## Feature Request  
+        Propose a new feature or improvement for the project.
 
   - type: textarea
     id: feature-description
     attributes:
       label: Feature Description
-      description: Clearly describe the feature you'd like to see.
-      placeholder: Describe the new feature here.
+      description: Clearly describe the feature or improvement you'd like to see.
+      placeholder: Describe the feature here.
     validations:
       required: true
 
@@ -23,7 +23,7 @@ body:
     attributes:
       label: Use Case
       description: How will this feature solve a problem or improve the project?
-      placeholder: Describe the benefit or problem this feature solves.
+      placeholder: Describe the benefit or use case for this feature.
 
   - type: dropdown
     id: priority
@@ -34,13 +34,14 @@ body:
         - Low
         - Medium
         - High
-      default: Medium
+      default: 1 # Medium is the second option (index starts at 0)
 
   - type: textarea
     id: additional-info
     attributes:
       label: Additional Context
       description: Add any other context, links, or screenshots about the feature.
+      placeholder: Include links, screenshots, or related issues here.
 
   - type: checkboxes
     id: terms
@@ -49,3 +50,4 @@ body:
       options:
         - label: I agree to follow the Code of Conduct.
           required: true
+
