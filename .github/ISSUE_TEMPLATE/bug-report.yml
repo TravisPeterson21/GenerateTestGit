@@ -1,145 +1,69 @@
-name: EDFacts File Progress Report
-description: Submit updates on EDFacts file development progress.
-title: "[EDFacts Progress]: "
-labels: ["EDFacts", "progress", "QA"]
+name: Bug Report
+description: Report an issue or bug in the system.
+title: "[Bug]: "
+labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        ## EDFacts File Progress Report
-        Please complete the form below to log progress and meet acceptance criteria.
-
-  - type: dropdown
-    id: file-spec-dropdown
-    attributes:
-      label: File Spec Number and File Name
-      description: Select the EDFacts File Specification Number and File Name.
-      options:
-        - FS005 - Child Count
-        - FS006 - Staff Count
-        - FS007 - Assessment Participation
-        - FS009 - Graduation Rate
-        - FS013 - Dropout Rate
-        - FS088 - Discipline Incidents
-        - FS141 - Suspension Expulsion
-        - FS143 - Educational Environment
-        - FS185 - Exiting Special Education
-        - FS203 - Post-School Outcomes
-        - Other (Specify in comments)
-
-  - type: textarea
-    id: progress
-    attributes:
-      label: File Development Progress
-      description: Describe the progress made on this file (e.g., status, blockers, next steps).
-      placeholder: Provide details about the development progress here.
-
-  - type: dropdown
-    id: acceptance-criteria
-    attributes:
-      label: Acceptance Criteria
-      description: What part of the acceptance criteria is being addressed?
-      options:
-        - Setup
-        - QA
-        - Migration Steps
-        - "Requires updating of Test Case(s)"
-        - Identify documentation updates
-        - Impact to OSC
-
-  - type: dropdown
-    id: test-case-update
-    attributes:
-      label: Requires Updating of Test Case(s)?
-      description: Does this update require changes to test cases?
-      options:
-        - "Yes"
-        - "No"
+        ## Bug Report
+        Please provide detailed information about the bug.
 
   - type: input
-    id: documentation-updates
+    id: contact
     attributes:
-      label: Documentation Updates
-      description: Specify any documentation updates needed (e.g., guide names or pages).
-      placeholder: Documentation details here.
-
-  - type: input
-    id: osc-impact
-    attributes:
-      label: Impact to OSC
-      description: Describe the impact to OSC, and include the OSC ticket number if applicable.
-      placeholder: e.g., OSC-12345
-
-  - type: dropdown
-    id: state-organization
-    attributes:
-      label: State or Organization
-      description: Select the state or organization responsible for this file.
-      options:
-        - Alabama
-        - Alaska
-        - Arizona
-        - Arkansas
-        - California
-        - Colorado
-        - Connecticut
-        - Delaware
-        - Florida
-        - Georgia
-        - Hawaii
-        - Idaho
-        - Illinois
-        - Indiana
-        - Iowa
-        - Kansas
-        - Kentucky
-        - Louisiana
-        - Maine
-        - Maryland
-        - Massachusetts
-        - Michigan
-        - Minnesota
-        - Mississippi
-        - Missouri
-        - Montana
-        - Nebraska
-        - Nevada
-        - New Hampshire
-        - New Jersey
-        - New Mexico
-        - New York
-        - North Carolina
-        - North Dakota
-        - Ohio
-        - Oklahoma
-        - Oregon
-        - Pennsylvania
-        - Rhode Island
-        - South Carolina
-        - South Dakota
-        - Tennessee
-        - Texas
-        - Utah
-        - Vermont
-        - Virginia
-        - Washington
-        - West Virginia
-        - Wisconsin
-        - Wyoming
-        - CNMI (Commonwealth of the Northern Mariana Islands)
-        - Other Organization
+      label: Contact Details
+      description: How can we contact you for more information?
+      placeholder: email@example.com
 
   - type: textarea
-    id: additional-comments
+    id: what-happened
     attributes:
-      label: Additional Comments
-      description: Add any other relevant details or comments about this file.
-      placeholder: Additional notes here.
+      label: What Happened?
+      description: Describe the issue and what you expected to happen.
+      placeholder: Describe the bug here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions to reproduce the issue.
+      placeholder: |
+        1. Go to ...
+        2. Click on ...
+        3. See error ...
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Specify the version or environment details.
+      placeholder: v1.0.0
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Error Output
+      description: Include relevant logs, screenshots, or error messages.
+      render: shell
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How severe is the issue?
+      options:
+        - Low
+        - Medium
+        - High
+      default: Medium
 
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com/code-of-conduct).
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: I agree to follow the Code of Conduct.
+          required: true
