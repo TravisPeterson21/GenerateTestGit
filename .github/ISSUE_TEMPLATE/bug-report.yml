@@ -6,8 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## Bug Report
-        Please provide detailed information about the bug.
+        ## Bug Report  
+        Please provide detailed information about the bug so we can address it quickly.
 
   - type: input
     id: contact
@@ -58,7 +58,7 @@ body:
         - Low
         - Medium
         - High
-      default: Medium
+      default: 1 # Medium (index starts at 0)
 
   - type: checkboxes
     id: terms
