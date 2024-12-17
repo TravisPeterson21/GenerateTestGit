@@ -1,0 +1,52 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+projects: ["example-org/1"]
+assignees:
+  - example-user
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Thanks for reporting the issue!
+        Please fill out the details below.
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we reach you if needed?
+      placeholder: email@example.com
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen.
+      placeholder: Provide a clear description of the issue.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: Which version are you using?
+      options:
+        - 1.0.0
+        - 1.1.0
+        - Latest
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: Confirm that you agree to our [Code of Conduct](https://example.com/code-of-conduct).
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
