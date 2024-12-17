@@ -1,4 +1,4 @@
-name: Ticket
+name: Bug Report
 description: Report an issue or bug in the system.
 title: "[Bug]: "
 labels: ["bug", "triage"]
@@ -7,89 +7,22 @@ body:
     attributes:
       value: |
         ## Bug Report  
-        Please provide detailed information about the bug and related file specifications.
+        Please provide detailed information about the bug and select the relevant IDEA file(s).
 
   - type: checkboxes
     id: file-spec
     attributes:
-      label: File Specification(s)
-      description: Select the relevant File Specification(s) related to this bug.
+      label: IDEA File Specification(s)
+      description: Select the relevant IDEA File Specification(s) related to this bug.
       options:
-        - label: "002 - Children with Disabilities (IDEA) School-Age"
-        - label: "005 - Children with Disabilities (IDEA) Removal to Interim Alternative Educational Setting"
-        - label: "006 - Children with Disabilities (IDEA) Suspensions/Expulsions"
-        - label: "007 - Children with Disabilities (IDEA) Reasons for Unilateral Removal"
-        - label: "009 - Children with Disabilities (IDEA) Exiting Special Education"
-        - label: "029 - Directory"
-        - label: "032 - Dropouts"
-        - label: "033 - Free and Reduced Price Lunch"
-        - label: "035 - Federal Programs"
-        - label: "037 - Title I Part A SWP/TAS Participation"
-        - label: "039 - Grades Offered"
-        - label: "040 - Graduates/Completers"
-        - label: "045 - Immigrant"
-        - label: "050 - Title III English Language Proficiency Results"
-        - label: "052 - Membership"
-        - label: "054 - MEP Students Served - 12 Months"
-        - label: "059 - Staff FTE"
-        - label: "067 - Title III Teachers"
-        - label: "070 - Special Education Teachers"
-        - label: "086 - Students Involved with Firearms"
-        - label: "088 - Children with Disabilities (IDEA) Disciplinary Removals"
-        - label: "089 - Children with Disabilities (IDEA) Early Childhood"
-        - label: "099 - Special Education Related Services Personnel"
-        - label: "103 - Accountability"
-        - label: "112 - Special Education Paraprofessionals"
-        - label: "113 - N or D Academic Achievement - State Agency"
-        - label: "116 - Title III Students Served"
-        - label: "118 - Homeless Students Enrolled"
-        - label: "119 - N or D Participation - State Agency"
-        - label: "121 - Migrant Students Eligible - 12 Months"
-        - label: "122 - MEP Students Eligible and Served - Summer/Intersession"
-        - label: "125 - N or D Academic Achievement - LEA"
-        - label: "126 - Title III Former EL Students"
-        - label: "127 - N or D Participation - LEA"
-        - label: "129 - CCD School"
-        - label: "130 - ESEA Status"
-        - label: "131 - LEA End of SY Status"
-        - label: "132 - Section 1003 Funds"
-        - label: "134 - Title I Part A Participation"
-        - label: "137 - English Language Proficiency Test"
-        - label: "138 - Title III English Language Proficiency Test"
-        - label: "139 - English Language Proficiency Results"
-        - label: "141 - EL Enrolled"
-        - label: "143 - Children with Disabilities (IDEA) Total Disciplinary Removals"
-        - label: "144 - Educational Services During Expulsion"
-        - label: "145 - MEP Services"
-        - label: "150 - Regulatory Adjusted-Cohort Graduation Rate"
-        - label: "151 - Cohorts for Regulatory Adjusted-Cohort Graduation Rate"
-        - label: "160 - High School Graduates Postsecondary Enrollment"
-        - label: "163 - Discipline Data"
-        - label: "165 - Migrant Data"
-        - label: "170 - LEA Subgrant Status"
-        - label: "175 - Academic Achievement in Mathematics"
-        - label: "178 - Academic Achievement in Reading/Language Arts"
-        - label: "179 - Academic Achievement in Science"
-        - label: "180 - N or D in Programs Outcomes"
-        - label: "181 - N or D Exited Programs Outcomes"
-        - label: "185 - Assessment Participation in Mathematics"
-        - label: "188 - Assessment Participation in Reading/Language Arts"
-        - label: "189 - Assessment Participation in Science"
-        - label: "190 - Charter School Authorizer Directory"
-        - label: "193 - Title I Allocations"
-        - label: "194 - Young Homeless Children Served (McKinney-Vento)"
-        - label: "195 - Chronic Absenteeism"
-        - label: "196 - Management Organizations Directory"
-        - label: "197 - Crosswalk of Charter Schools to Management Organizations"
-        - label: "198 - Charter Contracts"
-        - label: "199 - Graduation Rate Indicator Status"
-        - label: "200 - Academic Achievement Indicator Status"
-        - label: "201 - Other Academic Indicator Status"
-        - label: "202 - School Quality or Student Success Indicator Status"
-        - label: "203 - Teachers"
-        - label: "205 - Progress Achieving English Language Proficiency Indicator Status"
-        - label: "206 - School Support and Improvement"
-        - label: "207 - State Appropriations for Charter Schools"
+        - label: "FS002 - Assessment ETL Documentation Template"
+        - label: "FS005 - Child Count ETL Documentation Template"
+        - label: "FS029 - Directory ETL Documentation Template"
+        - label: "FS032 - Directory Lite ETL Documentation Template"
+        - label: "FS088 - Discipline ETL Documentation Template"
+        - label: "FS089 - Exiting ETL Documentation Template"
+        - label: "FS112 - Membership ETL Documentation Template"
+        - label: "FS099 - Personnel ETL Documentation Template1"
 
   - type: textarea
     id: what-happened
