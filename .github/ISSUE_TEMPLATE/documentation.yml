@@ -9,8 +9,8 @@ body:
         ## Documentation Update  
         Use this form to propose fixes or improvements to the documentation.  
         
-       📚 **Relevant Documentation Links**:  
-        - [GitBook Home Page](https://center-for-the-integration-of-id.gitbook.io/generate-documentation) 
+        📚 **Relevant Documentation Links**:  
+        - [GitBook Home Page](https://center-for-the-integration-of-id.gitbook.io/generate-documentation)
 
   - type: textarea
     id: current-issue
@@ -44,7 +44,7 @@ body:
         - Low
         - Medium
         - High
-      default: 1 # Medium priority
+      default: Medium
 
   - type: checkboxes
     id: terms
