@@ -9,10 +9,8 @@ body:
         ## Documentation Update  
         Use this form to propose fixes or improvements to the documentation.  
         
-        📚 **Relevant Documentation Links**:  
-        - [GitBook Home Page](https://your-gitbook-home-link)  
-        - [Significant Disproportionality Guide](https://your-gitbook-link)  
-        - [Set Up Guide](https://your-gitbook-link)  
+       📚 **Relevant Documentation Links**:  
+        - [GitBook Home Page](https://center-for-the-integration-of-id.gitbook.io/generate-documentation) 
 
   - type: textarea
     id: current-issue
