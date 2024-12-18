@@ -44,7 +44,7 @@ body:
         - Low
         - Medium
         - High
-      default: Medium
+      default: 1 # Index for "Medium"
 
   - type: checkboxes
     id: terms
@@ -53,4 +53,5 @@ body:
       options:
         - label: I agree to follow the Code of Conduct.
           required: true
+
 
