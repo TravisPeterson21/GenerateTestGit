@@ -17,11 +17,11 @@ jobs:
             const labelsToAdd = [];
 
             // Check for Priority in the issue body
-            if (body.includes('Priority: Low')) {
+            if (body.includes('Low')) {
               labelsToAdd.push('priority: low');
-            } else if (body.includes('Priority: Medium')) {
+            } else if (body.includes('Medium')) {
               labelsToAdd.push('priority: medium');
-            } else if (body.includes('Priority: High')) {
+            } else if (body.includes('High')) {
               labelsToAdd.push('priority: high');
             }
 
