@@ -1,0 +1,35 @@
+name: Apply Priority Labels
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  add-priority-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for Priority
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body = issue.body;
+            const labelsToAdd = [];
+
+            // Check for Priority in the issue body
+            if (body.includes('Priority: Low')) {
+              labelsToAdd.push('priority: low');
+            } else if (body.includes('Priority: Medium')) {
+              labelsToAdd.push('priority: medium');
+            } else if (body.includes('Priority: High')) {
+              labelsToAdd.push('priority: high');
+            }
+
+            if (labelsToAdd.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: labelsToAdd
+              });
+            }
