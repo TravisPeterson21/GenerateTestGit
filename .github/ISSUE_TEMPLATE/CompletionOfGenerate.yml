@@ -21,6 +21,19 @@ body:
         - Florida
         - Georgia
         - Other
+ 
+  - type: markdown
+    attributes:
+      value: |
+        ## State Selection Guide
+        Select one or more states below.
+
+        | Region       | States                             |
+        |--------------|------------------------------------|
+        | **Northeast**| CT, ME, MA, NH, RI, VT, NJ, NY, PA|
+        | **Midwest**  | IL, IN, IA, KS, MI, MN, MO, NE, ND|
+        | **South**    | AL, AR, DE, FL, GA, KY, LA, MS, NC|
+        | **West**     | AK, AZ, CA, CO, HI, ID, MT, NM, NV|
 
   - type: textarea
     id: file-spec-details
