@@ -1,6 +1,10 @@
 name: Update Issue Status Based on Project Column
 
 on:
+  workflow_dispatch:
+
+
+on:
   project_card:
     types: [moved]
 
