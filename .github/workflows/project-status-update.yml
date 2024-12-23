@@ -2,7 +2,8 @@ name: Update Issue Status Based on Project Column
 
 on:
   workflow_dispatch:
-
+  project_card:
+    types: [moved]
 
 permissions:
   issues: write
