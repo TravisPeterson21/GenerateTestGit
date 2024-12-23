@@ -6,8 +6,8 @@ on:
     types: [moved]
 
 permissions:
-  issues: write
-  projects: read
+  contents: write  # Required for repository interactions
+  issues: write    # Required for managing issue labels
 
 jobs:
   update-status:
@@ -18,9 +18,9 @@ jobs:
         with:
           script: |
             const projectCard = context.payload.project_card;
-            const columnName = projectCard.column_name;
-            const contentUrl = projectCard.content_url;
-
+            const columnName = projectCard.column_name; // New column name
+            const contentUrl = projectCard.content_url; // URL of the linked issue or PR
+            
             if (contentUrl && contentUrl.includes('/issues/')) {
               const issueNumber = contentUrl.split('/').pop();
               const repoOwner = context.repo.owner;
@@ -46,4 +46,3 @@ jobs:
                 });
               }
             }
-
