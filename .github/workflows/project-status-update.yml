@@ -4,10 +4,6 @@ on:
   workflow_dispatch:
 
 
-on:
-  project_card:
-    types: [moved]
-
 permissions:
   issues: write
   projects: read
