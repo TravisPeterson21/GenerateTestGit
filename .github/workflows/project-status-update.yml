@@ -1,65 +1,55 @@
 name: Update Issue Status Based on Project Column
 
 on:
-  workflow_dispatch: # Allow manual triggering for debugging purposes
   project_card:
-    types: [moved] # Trigger when a project card is moved between columns
+    types: [moved]
 
 permissions:
-  contents: write  # Required for repository interactions
-  issues: write    # Required for managing issue labels
+  contents: write
+  issues: write
 
 jobs:
   update-status:
     runs-on: ubuntu-latest
     steps:
       - name: Log Event Payload
-        run: echo "${{ toJson(github.event) }}" # Debugging step to log event payload
+        run: echo "${{ toJson(github.event) }}"
 
       - name: Update Issue Status
         uses: actions/github-script@v6
         with:
           script: |
             const projectCard = context.payload.project_card;
+            if (!projectCard) {
+              throw new Error("No project_card data in event payload.");
+            }
+
             const columnId = projectCard.column_id; // Column ID from the payload
             const contentUrl = projectCard.content_url; // URL of the linked issue or PR
             
-            if (contentUrl && contentUrl.includes('/issues/')) {
-              const issueNumber = contentUrl.split('/').pop();
-              const repoOwner = context.repo.owner;
-              const repoName = context.repo.repo;
-
-              // Map column IDs to column names
-              const columnMap = {
-                "1234567890": "No Status",
-                "0987654321": "Risks",
-                "1122334455": "To-Do",
-                "5566778899": "In Progress",
-                "6677889900": "Testing",
-                "7788990011": "Done"
-              };
-
-              const columnName = columnMap[columnId] || null;
-              if (columnName) {
-                const columnToLabelMap = {
-                  "No Status": "no status",
-                  "Risks": "risks",
-                  "To-Do": "to-do",
-                  "In Progress": "in progress",
-                  "Testing": "testing",
-                  "Done": "done"
-                };
-
-                const labelToApply = columnToLabelMap[columnName] || null;
-
-                if (labelToApply) {
-                  await github.rest.issues.addLabels({
-                    owner: repoOwner,
-                    repo: repoName,
-                    issue_number: issueNumber,
-                    labels: [labelToApply]
-                  });
-                }
-              }
+            if (!contentUrl) {
+              throw new Error("No content_url found. Ensure the card is linked to an issue.");
             }
 
+            const issueNumber = contentUrl.split('/').pop();
+            const repoOwner = context.repo.owner;
+            const repoName = context.repo.repo;
+
+            const columnToLabelMap = {
+              "1234567890": "no status",
+              "0987654321": "risks",
+              "1122334455": "to-do",
+              "5566778899": "in progress",
+              "6677889900": "testing",
+              "7788990011": "done"
+            };
+
+            const labelToApply = columnToLabelMap[columnId] || null;
+            if (labelToApply) {
+              await github.rest.issues.addLabels({
+                owner: repoOwner,
+                repo: repoName,
+                issue_number: issueNumber,
+                labels: [labelToApply]
+              });
+            }
