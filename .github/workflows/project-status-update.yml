@@ -1,0 +1,71 @@
+name: Update Issue Status Based on Project Column
+
+on:
+  project_card:
+    types: [moved]
+
+permissions:
+  issues: write
+  projects: read
+
+jobs:
+  update-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Issue Status
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const projectCard = context.payload.project_card;
+            const columnName = projectCard.column_name; // New column name
+            const contentUrl = projectCard.content_url; // URL of the linked issue or PR
+            
+            // Only proceed if this card is linked to an issue
+            if (contentUrl && contentUrl.includes('/issues/')) {
+              const issueNumber = contentUrl.split('/').pop();
+              const repoOwner = context.repo.owner;
+              const repoName = context.repo.repo;
+
+              // Define the column-to-label mapping
+              const columnToLabelMap = {
+                "No Status": "no status",
+                "Risks": "risks",
+                "To-Do": "to-do",
+                "In Progress": "in progress",
+                "Testing": "testing",
+                "Done": "done"
+              };
+
+              // Determine the label to apply
+              const labelToApply = columnToLabelMap[columnName] || null;
+
+              if (labelToApply) {
+                // Remove old status labels
+                const issueLabels = await github.rest.issues.listLabelsOnIssue({
+                  owner: repoOwner,
+                  repo: repoName,
+                  issue_number: issueNumber
+                });
+
+                const labelsToRemove = issueLabels.data
+                  .map(label => label.name)
+                  .filter(name => Object.values(columnToLabelMap).includes(name));
+
+                for (const label of labelsToRemove) {
+                  await github.rest.issues.removeLabel({
+                    owner: repoOwner,
+                    repo: repoName,
+                    issue_number: issueNumber,
+                    name: label
+                  });
+                }
+
+                // Add the new status label
+                await github.rest.issues.addLabels({
+                  owner: repoOwner,
+                  repo: repoName,
+                  issue_number: issueNumber,
+                  labels: [labelToApply]
+                });
+              }
+            }
