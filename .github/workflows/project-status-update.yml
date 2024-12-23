@@ -2,7 +2,7 @@ name: Update Issue Status Based on Project Column
 
 on:
   project_card:
-    types: [moved]
+    types: [moved, created, edited]
 
 permissions:
   contents: write
@@ -20,11 +20,6 @@ jobs:
         with:
           script: |
             const projectCard = context.payload.project_card;
-            if (!projectCard) {
-              throw new Error("No project_card data in event payload.");
-            }
-
-            const columnId = projectCard.column_id; // Column ID from the payload
             const contentUrl = projectCard.content_url; // URL of the linked issue or PR
             
             if (!contentUrl) {
@@ -35,16 +30,19 @@ jobs:
             const repoOwner = context.repo.owner;
             const repoName = context.repo.repo;
 
+            // Map column names to labels
             const columnToLabelMap = {
-              "1234567890": "no status",
-              "0987654321": "risks",
-              "1122334455": "to-do",
-              "5566778899": "in progress",
-              "6677889900": "testing",
-              "7788990011": "done"
+              "No Status": "no status",
+              "Risks": "risks",
+              "To-Do": "to-do",
+              "In Progress": "in progress",
+              "Testing": "testing",
+              "Done": "done"
             };
 
-            const labelToApply = columnToLabelMap[columnId] || null;
+            const columnName = projectCard.column_name; // Column name from the payload
+            const labelToApply = columnToLabelMap[columnName] || null;
+
             if (labelToApply) {
               await github.rest.issues.addLabels({
                 owner: repoOwner,
