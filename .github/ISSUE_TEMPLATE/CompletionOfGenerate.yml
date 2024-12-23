@@ -22,18 +22,73 @@ body:
         - Georgia
         - Other
  
-  - type: markdown
+  - type: checkboxes
+    id: states
     attributes:
-      value: |
-        ## State Selection Guide
-        Select one or more states below.
+      label: Associated State(s)
+      description: Select the state(s) or entity/entities working on this ticket.
+      options:
+        - label: Alabama
+        - label: Alaska
+        - label: Arizona
+        - label: Arkansas
+        - label: California
+        - label: Colorado
+        - label: Connecticut
+        - label: Delaware
+        - label: Florida
+        - label: Georgia
+        - label: Hawaii
+        - label: Idaho
+        - label: Illinois
+        - label: Indiana
+        - label: Iowa
+        - label: Kansas
+        - label: Kentucky
+        - label: Louisiana
+        - label: Maine
+        - label: Maryland
+        - label: Massachusetts
+        - label: Michigan
+        - label: Minnesota
+        - label: Mississippi
+        - label: Missouri
+        - label: Montana
+        - label: Nebraska
+        - label: Nevada
+        - label: New Hampshire
+        - label: New Jersey
+        - label: New Mexico
+        - label: New York
+        - label: North Carolina
+        - label: North Dakota
+        - label: Ohio
+        - label: Oklahoma
+        - label: Oregon
+        - label: Pennsylvania
+        - label: Rhode Island
+        - label: South Carolina
+        - label: South Dakota
+        - label: Tennessee
+        - label: Texas
+        - label: Utah
+        - label: Vermont
+        - label: Virginia
+        - label: Washington
+        - label: West Virginia
+        - label: Wisconsin
+        - label: Wyoming
+        - label: American Samoa
+        - label: Commonwealth of the Northern Mariana Islands
+        - label: District of Columbia
+        - label: Federated States of Micronesia
+        - label: Guam
+        - label: Marshall Islands
+        - label: Palau
+        - label: Puerto Rico
+        - label: U.S. Virgin Islands
+        - label: Bureau of Indian Education
 
-        | Region       | States                             |
-        |--------------|------------------------------------|
-        | **Northeast**| CT, ME, MA, NH, RI, VT, NJ, NY, PA|
-        | **Midwest**  | IL, IN, IA, KS, MI, MN, MO, NE, ND|
-        | **South**    | AL, AR, DE, FL, GA, KY, LA, MS, NC|
-        | **West**     | AK, AZ, CA, CO, HI, ID, MT, NM, NV|
 
   - type: textarea
     id: file-spec-details
