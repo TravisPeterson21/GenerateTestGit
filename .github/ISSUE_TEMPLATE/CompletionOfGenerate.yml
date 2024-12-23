@@ -9,18 +9,25 @@ body:
         ## Completion of Generate Ticket
         Use this template to provide details about the non-IDEA file spec you're working on.
 
-  - type: dropdown
-    id: state
+  - type: textarea
+    id: file-spec-details
     attributes:
-      label: Associated State
-      description: Select the state working on this ticket.
+      label: File Specification Details
+      description: Provide details about the file spec, including challenges or key milestones.
+      placeholder: Enter details about the file spec here.
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      description: Select the current status of this ticket.
       options:
-        - California
-        - Texas
-        - New York
-        - Florida
-        - Georgia
-        - Other
+        - No Status
+        - Risks
+        - To-Do
+        - In Progress
+        - Testing
+        - Done
  
   - type: checkboxes
     id: states
@@ -88,31 +95,3 @@ body:
         - label: Puerto Rico
         - label: U.S. Virgin Islands
         - label: Bureau of Indian Education
-
-
-  - type: textarea
-    id: file-spec-details
-    attributes:
-      label: File Specification Details
-      description: Provide details about the file spec, including challenges or key milestones.
-      placeholder: Enter details about the file spec here.
-
-  - type: dropdown
-    id: status
-    attributes:
-      label: Status
-      description: Select the current status of this ticket.
-      options:
-        - No Status
-        - Risks
-        - To-Do
-        - In Progress
-        - Testing
-        - Done
-
-  - type: textarea
-    id: notes
-    attributes:
-      label: Additional Notes
-      description: Add any other information related to this ticket.
-      placeholder: Enter additional notes here.
