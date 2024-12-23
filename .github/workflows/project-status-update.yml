@@ -1,9 +1,9 @@
 name: Update Issue Status Based on Project Column
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allow manual triggering for debugging purposes
   project_card:
-    types: [moved]
+    types: [moved] # Trigger when a project card is moved between columns
 
 permissions:
   contents: write  # Required for repository interactions
@@ -13,12 +13,15 @@ jobs:
   update-status:
     runs-on: ubuntu-latest
     steps:
+      - name: Log Event Payload
+        run: echo "${{ toJson(github.event) }}" # Debugging step to log event payload
+
       - name: Update Issue Status
         uses: actions/github-script@v6
         with:
           script: |
             const projectCard = context.payload.project_card;
-            const columnName = projectCard.column_name; // New column name
+            const columnId = projectCard.column_id; // Column ID from the payload
             const contentUrl = projectCard.content_url; // URL of the linked issue or PR
             
             if (contentUrl && contentUrl.includes('/issues/')) {
@@ -26,23 +29,37 @@ jobs:
               const repoOwner = context.repo.owner;
               const repoName = context.repo.repo;
 
-              const columnToLabelMap = {
-                "No Status": "no status",
-                "Risks": "risks",
-                "To-Do": "to-do",
-                "In Progress": "in progress",
-                "Testing": "testing",
-                "Done": "done"
+              // Map column IDs to column names
+              const columnMap = {
+                "1234567890": "No Status",
+                "0987654321": "Risks",
+                "1122334455": "To-Do",
+                "5566778899": "In Progress",
+                "6677889900": "Testing",
+                "7788990011": "Done"
               };
 
-              const labelToApply = columnToLabelMap[columnName] || null;
+              const columnName = columnMap[columnId] || null;
+              if (columnName) {
+                const columnToLabelMap = {
+                  "No Status": "no status",
+                  "Risks": "risks",
+                  "To-Do": "to-do",
+                  "In Progress": "in progress",
+                  "Testing": "testing",
+                  "Done": "done"
+                };
 
-              if (labelToApply) {
-                await github.rest.issues.addLabels({
-                  owner: repoOwner,
-                  repo: repoName,
-                  issue_number: issueNumber,
-                  labels: [labelToApply]
-                });
+                const labelToApply = columnToLabelMap[columnName] || null;
+
+                if (labelToApply) {
+                  await github.rest.issues.addLabels({
+                    owner: repoOwner,
+                    repo: repoName,
+                    issue_number: issueNumber,
+                    labels: [labelToApply]
+                  });
+                }
               }
             }
+
