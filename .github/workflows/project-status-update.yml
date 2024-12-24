@@ -2,6 +2,7 @@ name: Update Issue Status Based on Project Column
 
 # This workflow runs when a project card is moved
 on:
+  workflow_dispatch:
   project_card:
     types: [moved]  # Triggered when a card moves columns
 
