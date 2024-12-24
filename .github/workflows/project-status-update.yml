@@ -1,53 +1,57 @@
 name: Update Issue Status Based on Project Column
 
+# This workflow runs when a project card is moved
 on:
   project_card:
-    types: [moved, created, edited]
+    types: [moved]  # Triggered when a card moves columns
 
 permissions:
-  contents: write
-  issues: write
+  contents: write  # Allows the workflow to update repository contents
+  issues: write    # Allows the workflow to manage issue labels
 
 jobs:
-  update-status:
-    runs-on: ubuntu-latest
+  update-status:  # A job to update issue status
+    runs-on: ubuntu-latest  # The environment for the workflow
     steps:
       - name: Log Event Payload
-        run: echo "${{ toJson(github.event) }}"
+        run: echo "${{ toJson(github.event) }}"  # Prints event details for debugging
 
       - name: Update Issue Status
         uses: actions/github-script@v6
         with:
           script: |
             const projectCard = context.payload.project_card;
-            const contentUrl = projectCard.content_url; // URL of the linked issue or PR
-            
+
+            // Check if the card is linked to an issue
+            const contentUrl = projectCard.content_url;
             if (!contentUrl) {
-              throw new Error("No content_url found. Ensure the card is linked to an issue.");
+              console.log("Card is not linked to an issue. Skipping.");
+              return;
             }
 
+            // Extract the issue number from the URL
             const issueNumber = contentUrl.split('/').pop();
-            const repoOwner = context.repo.owner;
-            const repoName = context.repo.repo;
 
-            // Map column names to labels
+            // Define the column-to-label mapping
             const columnToLabelMap = {
-              "No Status": "no status",
-              "Risks": "risks",
-              "To-Do": "to-do",
-              "In Progress": "in progress",
+              "To Do": "to-do",
+              "In Progress": "in-progress",
               "Testing": "testing",
               "Done": "done"
             };
 
-            const columnName = projectCard.column_name; // Column name from the payload
+            // Get the column name and find the matching label
+            const columnName = projectCard.column_name;
             const labelToApply = columnToLabelMap[columnName] || null;
 
             if (labelToApply) {
+              console.log(`Adding label: ${labelToApply}`);
               await github.rest.issues.addLabels({
-                owner: repoOwner,
-                repo: repoName,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 issue_number: issueNumber,
                 labels: [labelToApply]
               });
+            } else {
+              console.log("No matching label found for column.");
             }
