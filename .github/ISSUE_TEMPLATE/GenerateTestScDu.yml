@@ -1,4 +1,4 @@
-name: Completion of Generate Ticket
+name: Completion of Generate Ticket test
 description: Create or update a ticket for non-IDEA file specs in the Completion of Generate repo.
 title: "[Pilot FS ###]: "
 labels: []
